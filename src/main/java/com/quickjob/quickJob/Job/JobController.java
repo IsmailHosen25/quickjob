@@ -10,15 +10,20 @@ import java.util.List;
 
 @RestController
 public class JobController {
-    private List<Job> jobs = new ArrayList<>();
+
+    private JobService jobService;
+
+    public JobController(JobService jobService) {
+        this.jobService = jobService;
+    }
 
     @GetMapping("/jobs")
     public List<Job> findall(){
-        return jobs;
+        return jobService.getall();
     }
     @PostMapping("/jobs")
     public String creatJobs(@RequestBody Job job){
-       jobs.add(job);
+       jobService.creatJob(job);
        return "Job added successfully";
     }
 }
