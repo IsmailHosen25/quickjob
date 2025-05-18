@@ -1,27 +1,39 @@
 package com.quickjob.quickJob.Job;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Job {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
     private String description;
-    private String minSalery;
-    private String maxSalery;
-    private  String location;
+    private String company;
+    private String location;
+    private Double salary;
 
+    // Constructors
+    public Job() {}
 
-    public Job(long id, String title, String minSalery, String description, String maxSalery, String location) {
-        this.id = id;
+    public Job(String title, String description, String company, String location, Double salary) {
         this.title = title;
-        this.minSalery = minSalery;
         this.description = description;
-        this.maxSalery = maxSalery;
+        this.company = company;
         this.location = location;
+        this.salary = salary;
     }
-    public long getId() {
+
+    // Getters and Setters
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,20 +53,12 @@ public class Job {
         this.description = description;
     }
 
-    public String getMinSalery() {
-        return minSalery;
+    public String getCompany() {
+        return company;
     }
 
-    public void setMinSalery(String minSalery) {
-        this.minSalery = minSalery;
-    }
-
-    public String getMaxSalery() {
-        return maxSalery;
-    }
-
-    public void setMaxSalery(String maxSalery) {
-        this.maxSalery = maxSalery;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getLocation() {
@@ -65,6 +69,11 @@ public class Job {
         this.location = location;
     }
 
+    public Double getSalary() {
+        return salary;
+    }
 
-
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
 }
