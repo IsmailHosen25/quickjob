@@ -10,7 +10,8 @@ public class Company {
     private Long id;
     private String name;
     private String address;
-    @OneToMany
+
+    @OneToMany (mappedBy = "company")
     private List<Job> jobs;
 
     public List<Job> getJobs() {

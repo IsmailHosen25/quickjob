@@ -31,7 +31,6 @@ public class JobService {
 
         job.setTitle(jobDetails.getTitle());
         job.setDescription(jobDetails.getDescription());
-        job.setCompany(jobDetails.getCompany());
         job.setLocation(jobDetails.getLocation());
         job.setSalary(jobDetails.getSalary());
 

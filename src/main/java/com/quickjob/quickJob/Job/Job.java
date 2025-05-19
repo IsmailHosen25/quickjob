@@ -1,10 +1,8 @@
 package com.quickjob.quickJob.Job;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.quickjob.quickJob.Company.Company;
+import jakarta.persistence.*;
 
 @Entity
 public class Job {
@@ -13,19 +11,21 @@ public class Job {
     private Long id;
     private String title;
     private String description;
-    private String company;
     private String location;
     private Double salary;
 
+    @ManyToOne
+    private Company company;
     // Constructors
     public Job() {}
 
-    public Job(String title, String description, String company, String location, Double salary) {
+    public Job(Long id, String title, String description, String location, Double salary, Company company) {
+        this.id = id;
         this.title = title;
         this.description = description;
-        this.company = company;
         this.location = location;
         this.salary = salary;
+        this.company = company;
     }
 
     // Getters and Setters
@@ -53,14 +53,6 @@ public class Job {
         this.description = description;
     }
 
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
     public String getLocation() {
         return location;
     }
@@ -75,5 +67,9 @@ public class Job {
 
     public void setSalary(Double salary) {
         this.salary = salary;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }
